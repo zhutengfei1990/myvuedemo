@@ -11,47 +11,27 @@
 		</div>
 
 		<hr />
+		<transition
+		    name="custom-classes-transition"
+		    enter-active-class="animated bounceInRight"
+		    leave-active-class="animated bounceOutRight"
+		  style="overflow: hidden;" >
+			<router-view></router-view>
+		</transition>
 
-		<router-view></router-view>
-
-		<div class="time-entries">
+		<div class="time-entries mt">
 			<p v-if="!plans.length"><strong>还没有任何计划</strong></p>
-			<div class="list-group">
-				<a class="list-group-item" v-for="(plan,index) in plans">
-					<div class="row">
-						<div class="col-sm-2 user-details">
-							<img :src="plan.avatar" class="avatar img-circle img-responsive" />
-							<p class="text-center">
-								<strong>
-                  {{ plan.name }}
-                </strong>
-							</p>
-						</div>
-
-						<div class="col-sm-2 text-center time-block">
-							<h3 class="list-group-item-text total-time">
-                <i class="glyphicon glyphicon-time"></i>
-                {{ plan.totalTime }}
-              </h3>
-							<p class="label label-primary text-center">
-								<i class="glyphicon glyphicon-calendar"></i> {{ plan.date }}
-							</p>
-						</div>
-
-						<div class="col-sm-7 comment-section">
-							<p>{{ plan.comment }}</p>
-						</div>
-
-						<div class="col-sm-1">
-							<button class="btn btn-xs btn-danger delete-button" @click="deletePlan(index)">
-              X
-              </button>
-						</div>
-
-					</div>
-				</a>
-
-			</div>
+			<ul class="list-group">
+				<li class="list-group-item" v-for="(plan,index) in plans">
+					<i class="glyphicon glyphicon-time timeLogo"></i> 
+					<a>{{ plan.totalTime }}</a>
+					
+					<i class="glyphicon glyphicon-calendar timeLogo"></i> 
+							{{ plan.date }}
+					<p>{{ plan.comment }}</p>
+					<button class="btn btn-xs btn-danger delete-button" @click="deletePlan(index)">X</button>
+				</li>
+			</ul>
 		</div>
 	</div>
 </template>
@@ -77,11 +57,11 @@
 </script>
 
 <style>
-	.avatar {
-		height: 75px;
-		margin: 0 auto;
+	.mt{
 		margin-top: 10px;
-		margin-bottom: 10px;
+	}
+	.timeLogo{
+		font-size: 50px;
 	}
 	
 	.user-details {

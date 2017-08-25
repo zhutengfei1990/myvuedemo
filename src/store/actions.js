@@ -12,5 +12,10 @@ export default{
 	  },
 	  deletePlan({ commit }, plan) {
 	    commit(types.DELETE_PLAN, plan)
+	  },
+	  
+	  //增加一条记录
+	  addRecord({commit},record){
+	  	commit(types.ADD_RECORD,record)
 	  }
 }

@@ -23,5 +23,9 @@ export default {
 	// 删除某计划
 	[types.DELETE_PLAN](state, idx) {
 		state.list.splice(idx, 1);
+	},
+	//增加一条记录
+	[types.ADD_RECORD](state,record){
+		state.companyList.push(record)
 	}
 }
